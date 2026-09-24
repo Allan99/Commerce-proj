@@ -2,6 +2,8 @@ package com.devsuperior.dscommerce.dto;
 
 import java.util.Objects;
 
+import com.devsuperior.dscommerce.entities.Category;
+
 public class CategoryDTO {
 
 	private Long id;
@@ -15,6 +17,12 @@ public class CategoryDTO {
 		super();
 		this.id = id;
 		this.name = name;
+	}
+	
+	public CategoryDTO(Category entity) {
+		super();
+		id = entity.getId();
+		name = entity.getName();
 	}
 	
 	public Long getId() {
