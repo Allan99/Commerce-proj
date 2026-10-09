@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -31,6 +32,14 @@ public class ProductController {
 	@GetMapping
 	public ResponseEntity<Page<ProductDTO>> findAll(Pageable pageable){
 		Page<ProductDTO> products = service.findAll(pageable);
+		return ResponseEntity.ok().body(products);
+	}
+	
+	@GetMapping("/find-by-name")
+	public ResponseEntity<Page<ProductDTO>> findByName(
+			@RequestParam(name = "name", defaultValue = "") String name, 
+			Pageable pageable){
+		Page<ProductDTO> products = service.findByName(name, pageable);
 		return ResponseEntity.ok().body(products);
 	}
 	
