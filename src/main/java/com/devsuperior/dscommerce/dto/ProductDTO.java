@@ -3,6 +3,7 @@ package com.devsuperior.dscommerce.dto;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.devsuperior.dscommerce.entities.Product;
 
@@ -48,6 +49,10 @@ public class ProductDTO {
 		description = entity.getDescription();
 		price = entity.getPrice();
 		imgUrl = entity.getImgUrl();
+		categories = entity.getCategories()
+				.stream()
+				.map(c -> new CategoryDTO(c))
+				.collect(Collectors.toSet());
 	}
 
 	public Long getId() {

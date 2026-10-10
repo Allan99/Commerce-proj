@@ -35,6 +35,12 @@ public class ProductController {
 		return ResponseEntity.ok().body(products);
 	}
 	
+	@GetMapping("with-categories")
+	public ResponseEntity<Page<ProductDTO>> findAllWithCategories(Pageable pageable){
+		Page<ProductDTO> products = service.findAllWithCategories(pageable);
+		return ResponseEntity.ok().body(products);
+	}
+	
 	@GetMapping("/find-by-name")
 	public ResponseEntity<Page<ProductDTO>> findByName(
 			@RequestParam(name = "name", defaultValue = "") String name, 
