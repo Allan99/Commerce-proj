@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import com.devsuperior.dscommerce.entities.Product;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
@@ -15,7 +16,7 @@ public class ProductDTO {
 	
 	private Long id;
 	
-	@Size(min = 3, max = 8, message = "Name size needs to be between 3 and 8 characters.")
+	@Size(min = 3, max = 20, message = "Name size needs to be between 3 and 8 characters.")
 	@NotBlank(message = "Field cannot be blank.")
 	private String name;
 	
@@ -27,6 +28,7 @@ public class ProductDTO {
 	private Double price;
 	private String imgUrl;
 	
+	@NotEmpty(message = "There has to exist at least one category")
 	private Set<CategoryDTO> categories = new HashSet<CategoryDTO>();
 	
 	public ProductDTO() {
