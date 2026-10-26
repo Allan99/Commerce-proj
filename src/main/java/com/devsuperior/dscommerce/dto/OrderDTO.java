@@ -8,6 +8,8 @@ import java.util.Objects;
 import com.devsuperior.dscommerce.entities.Order;
 import com.devsuperior.dscommerce.entities.enums.OrderStatus;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class OrderDTO {
 	
 	private Long id;
@@ -18,6 +20,7 @@ public class OrderDTO {
 	
 	private PaymentDTO payment;
 	
+	@NotEmpty(message = "Field has to contain at least one item")
 	private List<OrderItemDTO> items = new ArrayList<OrderItemDTO>();
 	
 	public OrderDTO() {
